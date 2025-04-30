@@ -1,0 +1,67 @@
+### Health Check - Web App
+GET http://localhost:8000/health
+
+### Health Check - Function App
+GET http://localhost:7071/api/HealthCheck
+
+### Authentication - Get Token
+POST http://localhost:8000/token
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=adminpassword
+
+### Get Schema - Web App (requires authentication)
+GET http://localhost:8000/schema
+Authorization: Bearer your_token_here
+
+### Get Schema Summary - Web App (requires authentication)
+GET http://localhost:8000/schema/summary
+Authorization: Bearer your_token_here
+
+### Execute SQL Query - Web App (requires authentication)
+POST http://localhost:8000/query
+Content-Type: application/json
+Authorization: Bearer your_token_here
+
+{
+  "query": "SELECT * FROM Users",
+  "analysis_type": "summary"
+}
+
+### Execute Analytical Query - Web App (requires authentication)
+POST http://localhost:8000/query
+Content-Type: application/json
+Authorization: Bearer your_token_here
+
+{
+  "query": "SELECT * FROM Orders",
+  "analysis_type": "trend"
+}
+
+### Get Schema - Function App
+GET http://localhost:7071/api/GetDbSchema
+x-functions-key: your_function_key_here
+
+### Get Schema Description - Function App
+GET http://localhost:7071/api/GetSchemaDescription
+x-functions-key: your_function_key_here
+
+### Execute SQL Query - Function App
+POST http://localhost:7071/api/RunSqlQuery
+Content-Type: application/json
+x-functions-key: your_function_key_here
+
+{
+  "query": "SELECT * FROM Users",
+  "analysis_type": "summary"
+}
+
+### Execute Analytical Query - Function App
+POST http://localhost:7071/api/RunSqlQuery
+Content-Type: application/json
+x-functions-key: your_function_key_here
+
+{
+  "query": "SELECT * FROM Orders",
+  "analysis_type": "trend"
+}

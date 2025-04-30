@@ -1,0 +1,12 @@
+POST http://localhost:7071/api/coms_ai_agent_func
+Content-Type: application/json
+
+{
+    "chatHistory": [
+        {
+            "role": "user",
+            "content": "Help me create an alert for a flooding in the area of Valencia with a severity 2/5, to warn citizens to stay indoors and avoid undergrounds or flooded areas."
+        }
+    ],
+    "threadId": "xxxx"
+}

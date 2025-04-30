@@ -1,0 +1,22 @@
+POST http://localhost:8000/api/initiateOutboundCall
+Content-Type: application/json
+
+{
+    "phone_numbers": ["+447442457021"],
+    "citizen_name": "Jacob Doe",
+    "citizen_id": "20903822K",
+    "language": "English",
+    "new_alert_data": "The flood alert has been triggered in your area. Please evacuate immediately toward the North of the municipality."
+}
+
+### send sms alerts
+POST http://localhost:8000/api/sendSms
+Content-Type: application/json
+
+{
+    "target_phone_numbers": ["+34622768875"],
+    "citizen_name": "John Doe",
+    "citizen_id": "20903822K",
+    "language": "English",
+    "new_alert_data": "The flood alert has been triggered in your area. Please evacuate immediately toward the North of the municipality.",
+}

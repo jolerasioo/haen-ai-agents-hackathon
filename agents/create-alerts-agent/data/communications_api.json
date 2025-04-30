@@ -1,0 +1,129 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "acstalk",
+      "version": "1.0"
+    },
+    "servers":[
+      {
+        "url": "https://localhost:8000",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/api/sendSms": {
+        "post": {
+          "tags": [
+            "acstalk"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendSmsRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      },
+      "/api/initiateOutboundCall": {
+        "post": {
+          "tags": [
+            "acstalk"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutboundCallRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }    
+      }
+    },
+    "components": {
+      "schemas": {
+        "BinaryData": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "OutboundCallRequest": {
+          "required": [
+            "citizen_id",
+            "citizen_name",
+            "new_alert_data",
+            "phone_numbers"
+          ],
+          "type": "object",
+          "properties": {
+            "phone_numbers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Must be an array of valid phone number in E.164 format",
+              "nullable": true
+            },
+            "citizen_name": {
+              "type": "string",
+              "nullable": true
+            },
+            "citizen_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "language": {
+              "type": "string",
+              "description": "The language to use for the call (default is English)",
+              "nullable": true
+            },
+            "new_alert_data": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SendSmsRequest": {
+          "required": [
+            "targetPhoneNumbers"
+          ],
+          "type": "object",
+          "properties": {
+            "targetPhoneNumbers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Must be a valid phone number in E.164 format",
+              "nullable": true
+            },
+            "newAlertData": {
+              "type": "string",
+              "nullable": true
+            },
+            "additionalData": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }

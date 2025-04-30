@@ -1,0 +1,6 @@
+POST http://localhost:7071/api/protocolragagent
+Content-Type: application/json
+
+{
+    "message": "What are the main evacuation options for valencia?"
+}

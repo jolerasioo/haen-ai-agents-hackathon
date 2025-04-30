@@ -1,0 +1,6 @@
+azure-ai-projects
+azure-identity
+python-dotenv
+fastapi
+uvicorn
+gunicorn

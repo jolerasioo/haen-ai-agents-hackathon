@@ -1,0 +1,70 @@
+### Health Check
+GET http://localhost:8000/health
+
+### Create Audit Log
+POST http://localhost:8000/logs
+Content-Type: application/json
+
+{
+  "category": "USER_ACTION",
+  "source": "auth-service",
+  "action": "user-login",
+  "user_id": "user123",
+  "details": {
+    "ip": "192.168.1.1",
+    "browser": "Chrome"
+  },
+  "tags": ["authentication", "security"]
+}
+
+### Get Logs
+GET http://localhost:8000/logs?category=USER_ACTION&limit=10
+
+### Get Logs with Time Range
+GET http://localhost:8000/logs?start_time=2025-01-01T00:00:00Z&end_time=2025-12-31T23:59:59Z&limit=10
+
+### Get Logs with Search
+GET http://localhost:8000/logs?search_text=login&limit=10
+
+### Analyze Logs
+POST http://localhost:8000/logs/analyze
+Content-Type: application/json
+
+{
+  "category": "SECURITY",
+  "start_time": "2025-01-01T00:00:00Z",
+  "end_time": "2025-01-31T23:59:59Z"
+}
+
+### Get Security Incidents
+GET http://localhost:8000/security/incidents
+
+### Function App Endpoints
+
+### Create Log (Function App)
+POST http://localhost:7071/api/create_log
+Content-Type: application/json
+
+{
+  "category": "SYSTEM_EVENT",
+  "source": "app-service",
+  "action": "system-startup",
+  "details": {
+    "version": "1.2.3",
+    "environment": "production"
+  },
+  "tags": ["system", "startup"]
+}
+
+### Get Logs (Function App)
+GET http://localhost:7071/api/get_logs?category=SYSTEM_EVENT&limit=10
+
+### Analyze Logs (Function App)
+POST http://localhost:7071/api/analyze_logs
+Content-Type: application/json
+
+{
+  "category": "SYSTEM_EVENT",
+  "start_time": "2025-01-01T00:00:00Z",
+  "end_time": "2025-01-31T23:59:59Z"
+}

@@ -1,0 +1,33 @@
+<policies>
+    <inbound>
+        <base />
+        <!-- Capacity management: allow only assigned tpm for each Retail use case subscritpion -->
+        <set-variable name="target-deployment" value="@((string)context.Request.MatchedParameters["deployment-id"])" />
+        <choose>
+            <when condition="@((string)context.Variables["target-deployment"] == "gpt-4o")">
+                <azure-openai-token-limit counter-key="@(context.Subscription.Id + "-" + context.Variables["target-deployment"])" tokens-per-minute="10000" estimate-prompt-tokens="false" tokens-consumed-header-name="consumed-tokens" remaining-tokens-header-name="remaining-tokens" retry-after-header-name="retry-after" />
+            </when>
+            <when condition="@((string)context.Variables["target-deployment"] == "chat")">
+                <azure-openai-token-limit counter-key="@(context.Subscription.Id + "-" + context.Variables["target-deployment"])" tokens-per-minute="2000" estimate-prompt-tokens="false" tokens-consumed-header-name="consumed-tokens" remaining-tokens-header-name="remaining-tokens" retry-after-header-name="retry-after" />
+            </when>
+            <otherwise>
+                <azure-openai-token-limit counter-key="@(context.Subscription.Id + "-default")" tokens-per-minute="1000" estimate-prompt-tokens="false" tokens-consumed-header-name="consumed-tokens" remaining-tokens-header-name="remaining-tokens" retry-after-header-name="retry-after" />
+            </otherwise>
+        </choose>
+        <!-- <azure-openai-token-limit counter-key="@(context.Subscription.Id)" 
+            tokens-per-minute="5000" 
+            estimate-prompt-tokens="true" 
+            tokens-consumed-header-name="consumed-tokens" 
+            remaining-tokens-header-name="remaining-tokens" 
+            retry-after-header-name="retry-after" /> -->
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

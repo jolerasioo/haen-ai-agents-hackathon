@@ -1,0 +1,11 @@
+azure-cosmos
+python-dotenv
+fastapi
+uvicorn
+azure-identity
+azure-ai-assistant
+tabulate
+pandas
+matplotlib
+python-jose[cryptography]
+passlib[bcrypt]

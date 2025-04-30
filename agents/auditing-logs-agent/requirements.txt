@@ -1,0 +1,11 @@
+azure-cosmos
+azure-monitor-ingestion
+azure-monitor-query
+azure-identity
+azure-search-documents
+semantic-kernel
+fastapi
+uvicorn
+python-dotenv
+pydantic
+azure-functions

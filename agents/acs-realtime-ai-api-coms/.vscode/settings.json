@@ -1,0 +1,5 @@
+{
+    "git.ignoreLimitWarning": true,
+    "appService.defaultWebAppToDeploy": "/subscriptions/2056dd89-8a83-4781-a231-f38f4206dd04/resourceGroups/sainsburys-cc-rg/providers/Microsoft.Web/sites/sainscc",
+    "appService.deploySubpath": "bin\\Release"
+}

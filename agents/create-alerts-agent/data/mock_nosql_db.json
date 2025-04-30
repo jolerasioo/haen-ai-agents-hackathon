@@ -1,0 +1,23 @@
+{
+    "citizenDb": [
+        
+        {
+            "id": "1293076K",
+            "name": "John Doe",
+            "age": 30,
+            "phone": "+447442457021",
+            "address": "Calle Serpis 25, 6A, Valencia, Spain",
+            "isVulnerable": false,
+            "preferedLanguage": "English"
+        },
+        {
+            "id": "2739405L",
+            "name": "Mariya Kasem",
+            "age": 67,
+            "phone": "+34622768875",
+            "address": "Avendida de la Paz 12, 3B, Valencia, Spain",
+            "isVulnerable": true,
+            "preferedLanguage": "Spanish"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+__azurite*
+*.log
+__blob*
+__queue*
+**/.alerts-venv/**
+**/.venv/**
+AzuriteConfig
